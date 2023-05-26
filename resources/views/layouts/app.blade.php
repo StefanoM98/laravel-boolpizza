@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+   @include('header')
     <main class="bg-light">
         @yield('content')
     </main>
