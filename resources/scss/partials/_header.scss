@@ -1,0 +1,12 @@
+header {
+    height: 80px;
+    background-color: rgba($color: #C90014, $alpha: 0.5);
+     img {
+        width: 80px;
+     }
+     position: sticky;
+     width: 100%;
+     top: 0;
+     left: 0;
+     z-index: 99;
+}
