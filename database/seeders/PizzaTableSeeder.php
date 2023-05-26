@@ -20,7 +20,7 @@ class PizzaTableSeeder extends Seeder
             $pizza = new pizza();
             //popolo i campi
             $pizza->taste = $faker->randomElement(['margherita', 'rosmarino', 'quattro-stagioni', 'marinara', 'diavola']);
-            $pizza->price = $faker->randomFloat(2);
+            $pizza->price = $faker->randomFloat(2,5,30);
             $pizza->save();
         }
     }
