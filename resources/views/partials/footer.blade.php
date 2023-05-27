@@ -1,5 +1,5 @@
 <footer>
-    <ul>
+    <ul class="d-flex container gap-5 flex-row justify-content-end align-items-center">
         <li>
             <i class="fa-brands fa-square-facebook"></i>
         </li>
