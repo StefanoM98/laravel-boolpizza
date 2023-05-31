@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 ">
-            <table class="table">
+            <table class="table text-danger">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

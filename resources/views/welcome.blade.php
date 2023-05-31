@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!--switch light-dark mode-->
-    <div class="wrapper-toggle">
-        <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
-        <i class="fa-solid fa-sun" style="color: #ffdf0f;"></i>
-        <i class="fa-solid fa-moon" style="color: #0050db;"></i>
-    </div>
-    <!--/switch light-dark mode-->
-
     <div class="container d-flex flex-wrap text-center">
         <div class="row row-cols-4">
             @foreach ($pizzas as $pizza)
@@ -26,28 +18,4 @@
         </div>
 
     </div>
-
-    <script>
-        function toggleTheme() {
-            const themeSwitch = document.getElementById('themeSwitch');
-            const body = document.body;
-            const card = document.querySelectorAll('.card');
-            console.log(card);
-
-            if (themeSwitch.checked) {
-                body.style.backgroundColor = 'black';
-                body.style.color = 'red';
-                for (let i = 0; i < 30; i++) {
-                    card[i].style.backgroundColor = 'white';
-                }
-            } else {
-                body.style.backgroundColor = 'white';
-                body.style.color = 'black';
-                for (let i = 0; i < 30; i++) {
-                    card[i].style.backgroundColor = 'grey';
-                }
-
-            }
-        }
-    </script>
 @endsection
