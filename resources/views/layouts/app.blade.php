@@ -21,8 +21,8 @@
 
 <body>
     @include('partials.header')
-      <!--switch light-dark mode-->
-      <div class="wrapper-toggle">
+    <!--switch light-dark mode-->
+    <div class="wrapper-toggle">
         <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
         <i class="fa-solid fa-sun" style="color: #ffdf0f;"></i>
         <i class="fa-solid fa-moon" style="color: #0050db;"></i>

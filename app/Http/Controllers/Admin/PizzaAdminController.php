@@ -53,7 +53,7 @@ class PizzaAdminController extends Controller
     public function show($id)
     {
         $pizza = Pizza::findOrFail($id);
-        return view ('pizzas.edit', compact('pizza'));
+        return view ('pizzas.show', compact('pizza'));
     }
 
     /**
