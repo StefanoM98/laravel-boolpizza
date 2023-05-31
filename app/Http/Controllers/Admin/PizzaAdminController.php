@@ -26,7 +26,7 @@ class PizzaAdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('pizzas.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class PizzaAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+        $pizza=new Pizza();
+        $pizza->fill($data);
+        $pizza->save();
+        return redirect()->route('pizzas.index');
     }
 
     /**
@@ -48,7 +52,8 @@ class PizzaAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $pizza = Pizza::findOrFail($id);
+        return view ('pizzas.edit', compact('pizza'));
     }
 
     /**
@@ -59,7 +64,9 @@ class PizzaAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pizza = Pizza::findOrFail($id);
+        return view('pizzas.edit', compact('pizza'));
+
     }
 
     /**
@@ -71,7 +78,10 @@ class PizzaAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=$request->all();
+        $pizza= Pizza::findOrFail($id);
+        $pizza->update($data);
+        return redirect()->route('pizzas.show', $pizza->id);
     }
 
     /**
@@ -82,6 +92,8 @@ class PizzaAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pizza= Pizza::findOrFail($id);
+        $pizza->delete();
+        return redirect()->route('pizzas.index');
     }
 }

@@ -19,10 +19,41 @@
 
 <body>
     @include('partials.header')
+      <!--switch light-dark mode-->
+      <div class="wrapper-toggle">
+        <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+        <i class="fa-solid fa-sun" style="color: #ffdf0f;"></i>
+        <i class="fa-solid fa-moon" style="color: #0050db;"></i>
+    </div>
+    <!--/switch light-dark mode-->
     <main>
         @yield('content')
     </main>
     @include('partials.footer')
+
+    <script>
+        function toggleTheme() {
+            const themeSwitch = document.getElementById('themeSwitch');
+            const body = document.body;
+            const card = document.querySelectorAll('.card');
+            console.log(card);
+
+            if (themeSwitch.checked) {
+                body.style.backgroundColor = 'black';
+                body.style.color = 'red';
+                for (let i = 0; i < 30; i++) {
+                    card[i].style.backgroundColor = 'white';
+                }
+            } else {
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                for (let i = 0; i < 30; i++) {
+                    card[i].style.backgroundColor = 'grey';
+                }
+
+            }
+        }
+    </script>
 </body>
 
 </html>
