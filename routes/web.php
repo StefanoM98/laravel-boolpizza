@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PizzaAdminController;
 use App\Http\Controllers\guest\PizzaController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PizzaController::class, 'index']);
+Route::get('/', [PizzaController::class, 'index'])->name('home');
+
+Route::resource('pizzas', PizzaAdminController::class);

@@ -21,6 +21,7 @@ class PizzaTableSeeder extends Seeder
             //popolo i campi
             $pizza->taste = $faker->randomElement(['margherita', 'rosmarino', 'quattro-stagioni', 'marinara', 'diavola']);
             $pizza->price = $faker->randomFloat(2,5,30);
+            $pizza->tipe = $faker->randomElement(['integral','kamut','grilli']);
             $pizza->save();
         }
     }

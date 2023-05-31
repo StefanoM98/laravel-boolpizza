@@ -2,14 +2,85 @@
 @use './partials/footer';
 @import '~bootstrap/scss/bootstrap';
 
-img {
-    max-width: 100%;
-}
 
 body {
     background-color: black;
-}
+    color: rgb(53, 53, 53);
 
-main {
-    padding-top: 20px;
+    .toggle{
+        position: relative;
+
+    }
+    .wrapper-toggle {
+        position: relative;
+
+        input[type="checkbox"] {
+            position: relative;
+            width: 80px;
+            height: 40px;
+            top: 50px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #fff;
+            outline: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+        }
+
+        input[type="checkbox"]::before {
+            content: "";
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: red;
+            background: #00ed64;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: translateX(100%);
+            background: #00ed64;
+            content: "";
+        }
+
+        input[type="checkbox"]:checked {
+            background: black;
+        }
+
+        .fa-sun {
+            position: absolute;
+            left: 11px;
+            top: 64px;
+        }
+
+        .fa-moon {
+            color: #0050db;
+            position: absolute;
+            left: 55px;
+            top: 64px;
+        }
+    }
+
+
+    main {
+        padding-top: 20px;
+
+        span {
+            color: rgb(13, 220, 20);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
 }
