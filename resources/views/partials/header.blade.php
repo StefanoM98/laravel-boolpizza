@@ -9,7 +9,7 @@
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Admin</a>
+                            <a class="nav-link" href="{{ route('pizzas.index') }}">Admin</a>
                         </li>
                     </ul>
                 </div>

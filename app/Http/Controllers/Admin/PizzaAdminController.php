@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pizza;
 use Illuminate\Http\Request;
 
 class PizzaAdminController extends Controller
@@ -14,7 +15,8 @@ class PizzaAdminController extends Controller
      */
     public function index()
     {
-        //
+        $pizzas = Pizza::all();
+        return view('pizzas.index', compact('pizzas'));
     }
 
     /**
