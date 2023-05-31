@@ -8,9 +8,9 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Titolo</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Info</th>
+                        <th scope="col">Gusto</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Impasto</th>
                     </tr>
                 </thead>
                 @foreach ($pizzas as $pizza)
@@ -38,5 +38,7 @@
                 @endforeach
             </table>
         </div>
+        <a class="btn btn-success my-5" href="{{ route('pizzas.create') }}">Aggiungine un altro</a>
+        <a class="btn btn-warning my-5" href="{{ route('home') }}">Ritorna in home page</a>
     </div>
 @endsection
