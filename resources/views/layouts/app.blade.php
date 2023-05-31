@@ -41,7 +41,7 @@
             console.log(card);
 
             if (themeSwitch.checked) {
-                body.style.backgroundColor = 'black';
+                body.style.backgroundColor = 'rgb(36, 36, 37)';
                 body.style.color = 'red';
                 for (let i = 0; i < 30; i++) {
                     card[i].style.backgroundColor = 'white';
