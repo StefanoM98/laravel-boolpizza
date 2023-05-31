@@ -1,0 +1,69 @@
+.hide {
+    position: sticky;
+    z-index: 2;
+    bottom: 45%;
+    left: 35%;
+    #confirmDelete {
+        position: absolute;
+        left:38%;
+        display: none;
+        background: rgba(255, 255, 255);
+        background-color: rgb(7, 190, 181);
+        width: 300px;
+        height: 100px;
+        border-radius: 6rem/6rem;
+        box-shadow: 20px 10px 0px 20px rgb(37 37 40 / 54%);
+        animation: move 3s infinite;
+
+    }
+
+    #confirmDelete:after {
+        content: '';
+        background: rgba(255, 255, 255);
+        background-color: rgb(7, 190, 181);
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 10rem/8rem;
+        top: -50px;
+        left: 50px;
+    }
+
+    #confirmDelete:before {
+        content: '';
+        background: rgba(255, 255, 255);
+        background-color: rgb(7, 190, 181);
+        position: absolute;
+        width: 170px;
+        height: 150px;
+        border-radius: 50%;
+        top: -90px;
+        right: 40px;
+    }
+
+    @keyframes move {
+        0% {
+            transform: translatex(0);
+        }
+
+        50% {
+            transform: translatex(-40px);
+        }
+    }
+
+    #confirmBtn {
+        background-color: rgb(227, 55, 7);
+
+    }
+
+    #cancelBtn {
+        background-color: rgb(34, 127, 4);
+    }
+
+    p {
+        z-index: 3;
+        position: relative;
+        color: rgb(183, 6, 223);
+        font-weight: 500;
+    }
+}
