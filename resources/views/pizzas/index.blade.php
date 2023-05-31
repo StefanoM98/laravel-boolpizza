@@ -26,10 +26,11 @@
                                         class="fa-solid fa-gear fa-bounce"></i></a>
 
                                 <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
-                                    @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger deletBtn" type="button"><i
-                                            class="fa-solid fa-trash fa-bounce"></i></button>
+                                    @csrf
+                                    <button class="btn btn-danger deletBtn" type="button">
+                                        <i class="fa-solid fa-trash fa-bounce"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -37,6 +38,9 @@
                 @endforeach
             </table>
         </div>
+
+        @include('partials.delete')
+
         <a class="btn btn-success my-5" href="{{ route('pizzas.create') }}">Aggiungine un altro</a>
         <a class="btn btn-warning my-5" href="{{ route('home') }}">Ritorna in home page</a>
     </div>
