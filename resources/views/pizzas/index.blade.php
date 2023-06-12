@@ -28,7 +28,7 @@
                                 <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger deletBtn" type="button">
+                                    <button class="btn btn-danger deletBtn" type="submit">
                                         <i class="fa-solid fa-trash fa-bounce"></i>
                                     </button>
                                 </form>

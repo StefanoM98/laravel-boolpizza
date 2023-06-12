@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pizza extends Model
 {
     use HasFactory;
-    protected $fillable = ['taste', 'price', 'tipe'];
-    
+    protected $fillable = ['taste', 'price', 'tipe', 'topping'];
+
+    public function toppings()
+    {
+        return $this->belongsToMany(Topping::class);
+    }
 }
