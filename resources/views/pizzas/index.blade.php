@@ -37,6 +37,10 @@
                     </tbody>
                 @endforeach
             </table>
+
+            <div>
+                {{ $pizzas->links() }}
+            </div>
         </div>
 
         @include('partials.delete')
