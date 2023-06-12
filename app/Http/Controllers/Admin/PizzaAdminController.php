@@ -17,7 +17,7 @@ class PizzaAdminController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::paginate(10);
         $toppings = Topping::all();
         return view('pizzas.index', compact('pizzas', 'toppings'));
     }
