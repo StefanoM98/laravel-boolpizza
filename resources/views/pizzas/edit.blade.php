@@ -23,6 +23,26 @@
             </select>
         </div>
 
+        <div class="form-group my-5 ">
+            <h4 class="my-3 ">Toppings che vuoi mettere: </h4>
+            <div class="d-flex justify-content-center my-3 gap-3">
+                @foreach ($toppings as $key => $topping)
+
+                    <label for="topping-{{ $topping->id }}">{{ $topping->name }}</label>
+                    <input type="checkbox" name="toppings[]" id="topping-{{ $topping->id }}"
+                        value="{{ $topping->id }}" @checked(old('toppings')
+                                ? in_array($topping->id, old('toppings', []))
+                                : $pizza->toppings->contains($topping))>
+
+                    @error('toppings')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                @endforeach
+            </div>
+        </div>
+
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
             <input type="text" class="form-control" id="price" name="price" value="{{ $pizza->price }}">
