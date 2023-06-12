@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pizza;
+use App\Models\Topping;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PizzaAdminController extends Controller
 {
@@ -16,7 +18,8 @@ class PizzaAdminController extends Controller
     public function index()
     {
         $pizzas = Pizza::all();
-        return view('pizzas.index', compact('pizzas'));
+        $toppings = Topping::all();
+        return view('pizzas.index', compact('pizzas', 'toppings'));
     }
 
     /**
@@ -26,7 +29,9 @@ class PizzaAdminController extends Controller
      */
     public function create()
     {
-        return view('pizzas.create');
+        $pizzas = Pizza::all();
+        $toppings = Topping::all();
+        return view('pizzas.create', compact('pizzas', 'toppings'));
     }
 
     /**
@@ -37,11 +42,15 @@ class PizzaAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
-        $pizza=new Pizza();
-        $pizza->fill($data);
-        $pizza->save();
-        return redirect()->route('pizzas.index');
+        $data = $request->all();
+        // $pizza = new Pizza();
+        // $pizza->fill($data);
+        // $pizza->save();
+        $pizza= Pizza::create($data);
+        if($request->has('toppings')){
+            $pizza->toppings()->attach($request->toppings);
+        }
+        return redirect()->route('pizzas.index')->with('message', 'La pizza ' . $pizza->name . ' è stata creata con successo');
     }
 
     /**
@@ -50,10 +59,9 @@ class PizzaAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pizza $pizza)
     {
-        $pizza = Pizza::findOrFail($id);
-        return view ('pizzas.show', compact('pizza'));
+        return view('pizzas.show', compact('pizza'));
     }
 
     /**
@@ -62,11 +70,10 @@ class PizzaAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pizza $pizza)
     {
-        $pizza = Pizza::findOrFail($id);
-        return view('pizzas.edit', compact('pizza'));
-
+        $toppings = Topping::all();
+        return view('pizzas.edit', compact('pizza', 'toppings'));
     }
 
     /**
@@ -76,13 +83,18 @@ class PizzaAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pizza $pizza)
     {
-        $data=$request->all();
-        $pizza= Pizza::findOrFail($id);
+        $data = $request->all();
         $pizza->update($data);
-        return redirect()->route('pizzas.show', $pizza->id);
+        if ($request->has('toppings')) {
+            $pizza->toppings()->sync($request->toppings); //sync significa che se ci sono tecnologie le salva nella tabella ponte 
+        } else {
+            $pizza->toppings()->detach(); //detach significa che se non ci sono tecnologie le cancella dalla tabella ponte 
+        }
+        return redirect()->route('pizzas.index')->with('message', 'La pizza ' . $pizza->name . ' è stata modificata con successo');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,10 +102,11 @@ class PizzaAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pizza $pizza)
     {
-        $pizza= Pizza::findOrFail($id);
+        $pizza->toppings()->detach(); 
+
         $pizza->delete();
-        return redirect()->route('pizzas.index');
+        return redirect()->route('pizzas.index')->with('message', 'La pizza ' . $pizza->name . ' è stata eliminata con successo');
     }
 }

@@ -28,6 +28,23 @@
                 <input type="text" class="form-control" id="price" name="price">
             </div>
 
+            
+            <div class="form-group my-5 ">
+                <h3 class="tiping">Ingredienti usati : </h3>
+                @foreach ($toppings as $topping)
+                <div class="d-flex tech mx-auto flex-wrap my-3 gap-3">
+
+                    
+                    <input type="checkbox" name="toppings[]" id="topping-{{$topping->id}}"
+                    value="{{$topping->id}}" @checked(in_array($topping->id, old('toppings', [])))>
+                    <label for="">{{ $topping->name }}</label>
+
+                </div>
+                @endforeach
+
+
+            </div>
+
             <button type="submit" class="btn btn-success">Invia</button>
 
         </form>
