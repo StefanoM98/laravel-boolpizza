@@ -16,4 +16,20 @@ class PizzaController extends Controller
             'results' => $pizzas
         ]);
     }
+
+    public function show($slug) {
+        $pizza = Pizza::with('toppings')->where('slug', $slug)->first();
+
+        if ($pizza) {
+            return response()->json([
+                'success' => true,
+                'results' => $pizza
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'Nessuna pizza trovata'
+            ])->setStatusCode(404);
+        }
+    }
 }
